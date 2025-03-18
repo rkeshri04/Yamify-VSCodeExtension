@@ -80,7 +80,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-If you encounter any issues or have any questions, please [open an issue](https://github.com/rkeshri04/yamify/issues) on GitHub.
+If you encounter any issues or have any questions, please [open an issue](https://github.com/rkeshri04/Yamify-VSCodeExtension/issues) on GitHub.
 
 ---
 

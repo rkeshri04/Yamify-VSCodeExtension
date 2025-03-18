@@ -2,7 +2,7 @@
   "name": "yamify",
   "displayName": "Yamify",
   "description": "Yamify simplifies exporting and importing codebases and settings with secure encryption, supporting full exports, encrypted modules, and dependency management. Perfect for migrating environments, sharing setups, or creating backups, Yamify ensures your development workflow is consistent, secure, and hassle-free.",
-  "version": "1.0",
+  "version": "1.0.0",
   "publisher": "rishabhkeshri",
   "engines": {
     "vscode": "^1.85.0"
@@ -45,7 +45,7 @@
         {
           "id": "codeToYamlContainer",
           "title": "Yamify",
-          "icon": "/media/icon.svg"
+          "icon": "/media/icon.png"
         }
       ]
     },
@@ -54,7 +54,7 @@
         {
           "id": "codeToYamlView",
           "name": "Code and Settings Manager",
-          "icon": "media/icon.svg"
+          "icon": "media/icon.png"
         }
       ]
     },
@@ -129,11 +129,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rkeshri04/yamify.git"
+    "url": "https://github.com/rkeshri04/Yamify-VSCodeExtension.git"
   },
-  "homepage": "https://github.com/rkeshri04/yamify#readme",
+  "homepage": "https://github.com/rkeshri04/Yamify-VSCodeExtension#readme",
   "bugs": {
-    "url": "https://github.com/rkeshri04/yamify/issues"
+    "url": "https://github.com/rkeshri04/Yamify-VSCodeExtension/issues"
   },
   "license": "MIT"
 }
