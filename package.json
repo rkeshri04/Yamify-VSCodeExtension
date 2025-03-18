@@ -1,0 +1,139 @@
+{
+  "name": "yamify",
+  "displayName": "Yamify",
+  "description": "Yamify simplifies exporting and importing codebases and settings with secure encryption, supporting full exports, encrypted modules, and dependency management. Perfect for migrating environments, sharing setups, or creating backups, Yamify ensures your development workflow is consistent, secure, and hassle-free.",
+  "version": "1.0",
+  "publisher": "rishabhkeshri",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "yaml",
+    "json",
+    "ai",
+    "settings",
+    "snippets",
+    "extensions",
+    "codebase",
+    "backup",
+    "sync",
+    "dependencies",
+    "encryption",
+    "security"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "code-to-yaml.convertToYaml",
+        "title": "Yamify: Convert Codebase to YAML/JSON"
+      },
+      {
+        "command": "code-to-yaml.importFromYaml",
+        "title": "Yamify: Import Code/Settings from YAML/JSON"
+      },
+      {
+        "command": "code-to-yaml.exportSettingsOnly",
+        "title": "Yamify: Export VS Code Settings Only"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeToYamlContainer",
+          "title": "Yamify",
+          "icon": "/media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "codeToYamlContainer": [
+        {
+          "id": "codeToYamlView",
+          "name": "Code and Settings Manager",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "code-to-yaml.convertToYaml",
+          "group": "navigation"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "code-to-yaml.convertToYaml",
+          "when": "view == codeToYamlView",
+          "group": "navigation"
+        },
+        {
+          "command": "code-to-yaml.exportSettingsOnly",
+          "when": "view == codeToYamlView",
+          "group": "navigation"
+        },
+        {
+          "command": "code-to-yaml.importFromYaml",
+          "when": "view == codeToYamlView",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Yamify",
+      "properties": {
+        "codeToYaml.outputMode": {
+          "type": "string",
+          "enum": [
+            "fullCode",
+            "modulesAndOverlay"
+          ],
+          "default": "fullCode",
+          "description": "Conversion mode: full code or encrypted modules and structure."
+        },
+        "codeToYaml.outputFormat": {
+          "type": "string",
+          "enum": [
+            "yaml",
+            "json"
+          ],
+          "default": "yaml",
+          "description": "Output format: YAML or JSON."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/js-yaml": "^4.0.5",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.11.24",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.47.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkeshri04/yamify.git"
+  },
+  "homepage": "https://github.com/rkeshri04/yamify#readme",
+  "bugs": {
+    "url": "https://github.com/rkeshri04/yamify/issues"
+  },
+  "license": "MIT"
+}
