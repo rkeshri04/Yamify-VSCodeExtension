@@ -2,7 +2,8 @@
   "name": "yamify",
   "displayName": "Yamify",
   "description": "Yamify simplifies exporting and importing codebases and settings with secure encryption, supporting full exports, encrypted modules, and dependency management. Perfect for migrating environments, sharing setups, or creating backups, Yamify ensures your development workflow is consistent, secure, and hassle-free.",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "icon": "media/icon.png",
   "publisher": "rishabhkeshri",
   "engines": {
     "vscode": "^1.85.0"
@@ -27,84 +28,58 @@
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "code-to-yaml.convertToYaml",
-        "title": "Yamify: Convert Codebase to YAML/JSON"
-      },
-      {
-        "command": "code-to-yaml.importFromYaml",
-        "title": "Yamify: Import Code/Settings from YAML/JSON"
-      },
-      {
-        "command": "code-to-yaml.exportSettingsOnly",
-        "title": "Yamify: Export VS Code Settings Only"
-      }
+        {
+            "command": "yamify.convertToYaml",
+            "title": "Yamify: Export Codebase to YAML/JSON"
+        },
+        {
+            "command": "yamify.exportSettingsOnly",
+            "title": "Yamify: Export Settings Only"
+        },
+        {
+            "command": "yamify.importFromYaml",
+            "title": "Yamify: Import from YAML/JSON"
+        }
     ],
     "viewsContainers": {
-      "activitybar": [
-        {
-          "id": "codeToYamlContainer",
-          "title": "Yamify",
-          "icon": "/media/icon.png"
-        }
-      ]
+        "activitybar": [
+            {
+                "id": "yamify-container",
+                "title": "Yamify",
+                "icon": "media/icon.png"
+            }
+        ]
     },
     "views": {
-      "codeToYamlContainer": [
-        {
-          "id": "codeToYamlView",
-          "name": "Code and Settings Manager",
-          "icon": "media/icon.png"
-        }
-      ]
-    },
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "code-to-yaml.convertToYaml",
-          "group": "navigation"
-        }
-      ],
-      "view/title": [
-        {
-          "command": "code-to-yaml.convertToYaml",
-          "when": "view == codeToYamlView",
-          "group": "navigation"
-        },
-        {
-          "command": "code-to-yaml.exportSettingsOnly",
-          "when": "view == codeToYamlView",
-          "group": "navigation"
-        },
-        {
-          "command": "code-to-yaml.importFromYaml",
-          "when": "view == codeToYamlView",
-          "group": "navigation"
-        }
-      ]
+        "yamify-container": [
+            {
+                "id": "yamifyActivityView",
+                "name": "Yamify Tools",
+                "icon": "media/icon.svg"
+            }
+        ]
     },
     "configuration": {
-      "title": "Yamify",
-      "properties": {
-        "codeToYaml.outputMode": {
-          "type": "string",
-          "enum": [
-            "fullCode",
-            "modulesAndOverlay"
-          ],
-          "default": "fullCode",
-          "description": "Conversion mode: full code or encrypted modules and structure."
-        },
-        "codeToYaml.outputFormat": {
-          "type": "string",
-          "enum": [
-            "yaml",
-            "json"
-          ],
-          "default": "yaml",
-          "description": "Output format: YAML or JSON."
+        "title": "Yamify",
+        "properties": {
+            "yamify.exportMode": {
+                "type": "string",
+                "enum": ["Non-Encrypted Format", "Encrypted Format"],
+                "default": "Non-Encrypted Format",
+                "description": "Select export mode: Non-Encrypted preserves exact formatting, Encrypted uses single-line output"
+            },
+            "yamify.outputFormat": {
+                "type": "string",
+                "enum": ["yaml", "json"],
+                "default": "yaml",
+                "description": "Choose output format for exported files"
+            },
+            "yamify.preserveNewlines": {
+                "type": "boolean",
+                "default": false,
+                "description": "Enable to use \\n, \\t, \\r with minimal lines instead of preserving exact formatting"
+            }
         }
-      }
     }
   },
   "scripts": {
